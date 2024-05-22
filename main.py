@@ -1,10 +1,6 @@
-from sqlalchemy import create_engine, Column, Integer, String, Float, ForeignKey, and_, Boolean, Text, Date
-from sqlalchemy.orm import sessionmaker, declarative_base
+from sqlalchemy import Column, Integer, String, Float, ForeignKey, and_, Boolean, Text, Date
 
-engine = create_engine("mysql+mysqlconnector://root:Ddpassword@localhost:3308/aviation")
-Base = declarative_base()
-Session = sessionmaker(bind=engine)
-session = Session()
+from connexion import Base, session, engine
 
 class Utilisateur(Base):
     __tablename__ = 'utilisateur'
