@@ -1,7 +1,7 @@
 from sqlalchemy import create_engine, Column, Integer, String, Float, ForeignKey, and_, Boolean, Text, Date
 from sqlalchemy.orm import sessionmaker, declarative_base
 
-engine = create_engine("mysql+mysqlconnector://root:root@localhost/aviation")
+engine = create_engine("mysql+mysqlconnector://root:Ddpassword@localhost:3308/aviation")
 Base = declarative_base()
 Session = sessionmaker(bind=engine)
 session = Session()
@@ -9,30 +9,30 @@ session = Session()
 class Utilisateur(Base):
     __tablename__ = 'utilisateur'
     id = Column(Integer, primary_key=True)
-    nom = Column(Text,nullable=False)
+    nom_U = Column(Text,nullable=False)
     prenom = Column(Text,nullable=False)
 
 class Compagnie(Base):
     __tablename__ = 'compagnie'
     id = Column(Integer, primary_key=True)
-    nom = Column(Text,nullable=False)
+    nom_Comp = Column(Text,nullable=False)
 
 class Avion(Base):
     __tablename__ = 'avion'
     id = Column(Integer, primary_key=True)
-    nom = Column(Text,nullable=False)
+    nom_A = Column(Text,nullable=False)
     id_compagnie = Column(Integer, ForeignKey('compagnie.id'),nullable=False)
 
 class Siege(Base):
     __tablename__ = 'Siege'
     id = Column(Integer, primary_key=True)
-    nom = Column(Text,nullable=False)
+    nom_S = Column(Text,nullable=False)
     id_avion = Column(Integer, ForeignKey('avion.id'),nullable=False)
 
 class Pays(Base):
     __tablename__ = 'pays'
     id = Column(Integer, primary_key=True)
-    nom = Column(Text,nullable=False)
+    nom_P = Column(Text,nullable=False)
 
 class Reservation(Base):
     __tablename__ = 'reservation'
