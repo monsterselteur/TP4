@@ -1,6 +1,6 @@
 from sqlalchemy import Column, Integer, Text, ForeignKey
 
-from connexion import Base
+from connexion import Base, engine
 
 
 class Avion(Base):
