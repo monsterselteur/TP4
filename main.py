@@ -36,7 +36,7 @@ class Pays(Base):
 
 class Reservation(Base):
     __tablename__ = 'reservation'
-    id_reservation = Column(Integer, ForeignKey('reservation.id'), primary_key=True, nullable=False)
+    id = Column(Integer, primary_key=True, nullable=False)
     id_utilisateur = Column(Integer, ForeignKey('utilisateur.id'), primary_key=True, nullable=False)
 
 class Vol(Base):
@@ -54,3 +54,5 @@ class Avoir(Base):
     id_vol = Column(Integer, ForeignKey('vol.id'), primary_key=True, nullable=False)
     id_siege = Column(Integer, ForeignKey('Siege.id'), primary_key=True, nullable=False)
     id_reservation = Column(Integer, ForeignKey('reservation.id'), primary_key=True, nullable=False)
+
+Base.metadata.create_all(engine)
