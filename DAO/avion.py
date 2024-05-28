@@ -68,7 +68,7 @@ def update_avion(id, nom, id_comp):
     session.execute(stmt)
 
 
-def delete_c(id):
+def delete_avion(id):
     """
     Supprime un Avion.
 

@@ -35,7 +35,7 @@ def read_s(id):
     return session.query(Siege).filter(Siege.id == id).first()
 
 
-def read_all_siege():
+def read_all_s():
     """
     Recherche touts les sieges.
 
@@ -47,7 +47,7 @@ def read_all_siege():
     return session.query(Siege).all()
 
 
-def update_avion(id, nom, id_avion):
+def update_s(id, nom, id_avion):
     """
     Met à jour un siege.
 
@@ -68,7 +68,7 @@ def update_avion(id, nom, id_avion):
     session.execute(stmt)
 
 
-def delete_c(id):
+def delete_s(id):
     """
     Supprime un siege.
 
