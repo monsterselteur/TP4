@@ -27,7 +27,7 @@ class Pays(Base):
 class Reservation(Base):
     __tablename__ = 'reservation'
     id = Column(Integer, primary_key=True, nullable=False)
-    id_utilisateur = Column(Integer, ForeignKey('utilisateur.id'), primary_key=True, nullable=False)
+    id_utilisateur = Column(Integer, ForeignKey('utilisateur.id'), nullable=False)
 class Vol(Base):
     __tablename__ = 'vol'
     id = Column(Integer, primary_key=True)
