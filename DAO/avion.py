@@ -4,7 +4,7 @@ from sqlalchemy import update, select, delete
 
 def create_avion(nom, id_comp):
     """
-    Créer un avion.
+    Créer un avion d'une compagnie.
 
     Parameters
     ----------
