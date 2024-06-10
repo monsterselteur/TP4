@@ -24,8 +24,6 @@ class Pays(Base):
     __tablename__ = 'pays'
     id = Column(Integer, primary_key=True)
     nom_P = Column(Text,nullable=False)
-    def __str__(self):
-        return self.nom_P
 class Reservation(Base):
     __tablename__ = 'reservation'
     id = Column(Integer, primary_key=True, nullable=False)
