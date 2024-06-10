@@ -1,6 +1,7 @@
 from Database.create import Vol
 from connexion import session
-from sqlalchemy import update, select, delete, Date
+from sqlalchemy import update, select, delete, Date, and_
+from DAO import pays
 
 
 def create_v(prix, dateDepart, dateArrivee, id_paysD, id_paysA, id_avion):
@@ -49,6 +50,33 @@ def read_v(id):
         L'objet vol.
     """
     return session.query(Vol).filter(Vol.id == id).first()
+
+
+def read_name(paysDepart, paysArrivee):
+    """
+    Recherche tout les vol par les pays de départ et d'arrivée.
+
+    Parameters
+    ----------
+    paysDepart : str
+        Le nom du pays de départ du vol.
+    paysArrivee : str
+        Le nom du pays d'arrivée du vol.
+    Returns
+    -------
+    lst_Vol
+        List d'objet vol.
+    """
+    return (
+        session
+        .query(Vol)
+        .filter(
+            and_(
+                Vol.id_paysArrivee == pays.read_name_p(paysArrivee).id,
+                Vol.id_paysDepart == pays.read_name_p(paysDepart).id
+            )
+        ).all()
+    )
 
 
 def read_all_v():

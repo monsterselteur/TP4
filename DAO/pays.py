@@ -32,6 +32,21 @@ def read_p(id):
     """
     return session.query(Pays).filter(Pays.id == id).first()
 
+def read_name_p(nom):
+    """
+    Recherche un pays avec le nom.
+
+    Parameters
+    ----------
+    nom : str
+        Le nom du pays.
+
+    Returns
+    -------
+    Pays
+        L'objet pays.
+    """
+    return session.query(Pays).filter(Pays.nom_P == nom).first()
 
 def read_all_p():
     """
