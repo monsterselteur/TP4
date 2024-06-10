@@ -102,17 +102,4 @@ b.pack(side=BOTTOM)
 
 b['command']=OngetNext
 
-
-
-
-
-
-
-
-
-
-
-
-
-
 root.mainloop()
