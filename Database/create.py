@@ -4,8 +4,9 @@ from connexion import Base, engine
 class Utilisateur(Base):
     __tablename__ = 'utilisateur'
     id = Column(Integer, primary_key=True)
-    nom_U = Column(Text,nullable=False)
-    prenom = Column(Text,nullable=False)
+    login = Column(Text,nullable=False)
+    mdp = Column(Text,nullable=False)
+
 class Compagnie(Base):
     __tablename__ = 'compagnie'
     id = Column(Integer, primary_key=True)
@@ -24,6 +25,8 @@ class Pays(Base):
     __tablename__ = 'pays'
     id = Column(Integer, primary_key=True)
     nom_P = Column(Text,nullable=False)
+    def __str__(self):
+        return self.nom_P
 class Reservation(Base):
     __tablename__ = 'reservation'
     id = Column(Integer, primary_key=True, nullable=False)
@@ -37,6 +40,9 @@ class Vol(Base):
     id_paysDepart = Column(Integer, ForeignKey('pays.id'), nullable=False)
     id_paysArrivee = Column(Integer, ForeignKey('pays.id'), nullable=False)
     id_avion = Column(Integer, ForeignKey('avion.id'), nullable=False)
+    def __str__(self):
+        return self.prix + self.dateDepart + self.dateArrivee + self.id_paysDepart + self.id_paysArrivee + self.id_avion
+
 class Avoir(Base):
     __tablename__ = 'avoir'
     id_vol = Column(Integer, ForeignKey('vol.id'), primary_key=True, nullable=False)
