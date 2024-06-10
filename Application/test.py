@@ -3,6 +3,7 @@ from tkinter import ttk
 
 from DAO import pays, vol, utilisateur
 from Database.create import Utilisateur
+from Application import InterfacePrincipale
 
 lstPays = pays.read_all_p()
 
@@ -11,13 +12,14 @@ token["utilisateur"] = None
 
 
 def nextScreen():
-    return 1
+    root.destroy()
+    InterfacePrincipale.interfacePrincipale()
 
 def login():
     login = entry_login.get()
     mdp = entry_mdp.get()
     user1 = utilisateur.read_mdp_u(login, mdp)
-    if user1 is not None:
+    if user1:
         token["utilisateur"] = user1
         nextScreen()
 
