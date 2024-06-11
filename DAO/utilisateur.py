@@ -1,6 +1,8 @@
+from sqlalchemy.orm import sessionmaker
+
 from Database.create import Utilisateur
 from connexion import session
-from sqlalchemy import update, select, delete
+from sqlalchemy import update, select, delete, text
 
 
 def create_u(login, mdp):
@@ -19,6 +21,33 @@ def create_u(login, mdp):
     session.commit()
     return user
 
+
+def ListUser():
+    lis_u = []
+
+    res = session.query(Utilisateur.login).all()
+
+    for a in res:
+        lis_u.append(a[0])
+    return lis_u
+
+
+def IsUser(login):
+    u = ListUser()
+    for a in range(0, len(u)):
+        if u[a] == login:
+            return True,a
+    return False,0
+
+
+
+def Id_u(login):
+    res = session.query(Utilisateur.id).all()
+
+    return res[len(res) - 1][0]-1
+
+
+#print(ListId_u())
 
 def read_u(id):
     """
@@ -66,6 +95,10 @@ def read_all_u():
     Liste_Utilisateur
         Une liste d'objet utilisateur.
     """
+
+    """global identify
+    identify = session.query(Utilisateur).count().bit_count()
+    print("Count=%d" % identify)"""
     return session.query(Utilisateur).all()
 
 
