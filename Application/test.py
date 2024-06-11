@@ -13,7 +13,7 @@ token["utilisateur"] = None
 
 def nextScreen():
     root.destroy()
-    InterfacePrincipale.interfacePrincipale()
+    InterfacePrincipale.run()
 
 def login():
     login = entry_login.get()
